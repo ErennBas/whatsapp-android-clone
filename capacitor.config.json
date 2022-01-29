@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "whatsapp-android-clone",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
