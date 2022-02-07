@@ -1,3 +1,25 @@
-<p>
-  chats works!
-</p>
+<ion-list class="margin-bottom ion-no-padding">
+  <ion-item
+    *ngFor="let contact of contacts"
+    class="ion-activatable"
+  >
+    <ion-avatar slot="start" style="height: 50px; width: 50px;">
+      <img [src]="contact?.contactAvatar" />
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-avatar> 
+    <ion-label class="ion-text-wrap">
+      <h2 class="text-height">
+        <strong>{{ contact?.contactName }}</strong>
+        <p style="font-size: 10px;" class="ion-float-end">{{ contact?.time | date: "shortTime" }}</p>
+      </h2>
+      <p class="text-height">{{ contact?.snippet }}</p>
+    </ion-label>
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-item>
+</ion-list>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="primary">
+    <ion-icon color="light" name="chatbox-ellipses"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
