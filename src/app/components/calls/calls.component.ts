@@ -10,27 +10,27 @@ export class CallsComponent implements OnInit {
   profileCdn: string = environment.profilePhotoCdn;
   contacts = [
     {
-      contactName: 'Finn',
+      contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
-      snippet: 'Listen, I\'ve had a pretty messed up day...',
+      snippet: 'az bak şuraya...',
       time: new Date(Date.now())
     },
     {
-      contactName: 'Han',
+      contactName: 'Veli',
       contactAvatar: this.profileCdn + '2.jfif',
-      snippet: 'I\'ve got enough on my plate as it is, and I...',
+      snippet: 'template iyi oturuyor',
       time: new Date(Date.now())
     },
     {
-      contactName: 'Rey',
+      contactName: 'Kırk Dokuz',
       contactAvatar: this.profileCdn + '4.jfif',
-      snippet: 'You will remove these restraints and leave...',
+      snippet: 'acaba gelen mesaj sayısını gösteren kısmı nasıl yapıcam',
       time: new Date(Date.now())
     },
     {
-      contactName: 'Luke',
+      contactName: 'Elli',
       contactAvatar: this.profileCdn + '5.jfif',
-      snippet: 'I feel the good in you, the conflict...',
+      snippet: 'Halederiz bir şekilde. Takma..',
       time: new Date(Date.now())
     }
   ];

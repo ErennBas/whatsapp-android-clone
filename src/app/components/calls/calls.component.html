@@ -11,7 +11,7 @@
       <h2 class="text-height">
         <strong>{{ contact?.contactName }}</strong>
       </h2>
-      <p class="text-height">{{ contact?.time | date: "medium" }}</p>
+      <p class="text-height">{{ contact?.time | date: "dd MMMM y HH:mm" }}</p>
     </ion-label>
     <ion-button slot="end" fill="clear">
       <ion-icon slot="icon-only" color="primary" name="call-sharp"></ion-icon>

@@ -5,11 +5,13 @@ import { StatusComponent } from './status/status.component';
 import { CallsComponent } from './calls/calls.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { RightChatsComponentTime } from '../all.pipe';
+import { HideHeaderDirective } from '../directives/hide-header.directive';
 
 
 
 @NgModule({
-  declarations: [ChatsComponent, StatusComponent, CallsComponent],
+  declarations: [ChatsComponent, StatusComponent, CallsComponent, ],
   imports: [
     CommonModule,
     FormsModule,
