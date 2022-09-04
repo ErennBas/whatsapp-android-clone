@@ -11,7 +11,7 @@ import { HideHeaderDirective } from '../directives/hide-header.directive';
 
 
 @NgModule({
-  declarations: [ChatsComponent, StatusComponent, CallsComponent, ],
+  declarations: [ChatsComponent, StatusComponent, CallsComponent, RightChatsComponentTime, HideHeaderDirective],
   imports: [
     CommonModule,
     FormsModule,

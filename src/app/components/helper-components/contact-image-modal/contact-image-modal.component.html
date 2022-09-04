@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{ currentContact.contactName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-justify-content-center" class="new-background-color">
+  <ion-img [src]="currentContact.contactAvatar"></ion-img>
+</ion-content>

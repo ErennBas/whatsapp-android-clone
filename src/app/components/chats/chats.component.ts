@@ -1,15 +1,22 @@
 /* eslint-disable max-len */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AnimationController } from '@ionic/angular';
+import { AnimationController, IonModal, ModalController } from '@ionic/angular';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
+import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 
 @Component({
   selector: 'app-chats',
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.scss'],
 })
+
 export class ChatsComponent implements OnInit {
+  @ViewChild(IonModal) modal: IonModal;
+  @ViewChild(IonModal) modal2: IonModal;
+  
   profileCdn: string = environment.profilePhotoCdn;
+  currentContact;
   contacts = [
     {
       contactName: 'Ali',
@@ -127,7 +134,7 @@ export class ChatsComponent implements OnInit {
     }
   ];
 
-  constructor(private animationCtrl: AnimationController) {
+  constructor(private animationCtrl: AnimationController, private statusBar: StatusBar, private modalCtrl: ModalController) {
     this.contacts.sort(this.compare);
   }
 
@@ -151,7 +158,7 @@ export class ChatsComponent implements OnInit {
       .create()
       .addElement(baseEl)
       .easing('ease-out')
-      .duration(500)
+      .duration(200)
       .addAnimation([backdropAnimation, wrapperAnimation]);
   };
 
@@ -160,6 +167,48 @@ export class ChatsComponent implements OnInit {
   };
 
   ngOnInit() {}
+
+  onWillDismiss(event){
+    this.statusBar.backgroundColorByHexString('#128C7E');
+  }
+
+  async openCurrentContactAvatar(){
+    console.log("fdsa");
+
+    const contactImageModal = await this.modalCtrl.create({
+      component: ViewerModalComponent,
+      componentProps: {
+        src: this.currentContact.contactAvatar,
+        scheme: "dark",
+        title: this.currentContact.contactName
+      },      
+      cssClass: 'ion-img-viewer',
+      keyboardClose: true,
+      showBackdrop: true,
+      enterAnimation: this.enterAnimation,
+      leaveAnimation: this.leaveAnimation,
+      animated: true
+    });
+    this.modal.dismiss();
+    contactImageModal.present();
+
+
+    contactImageModal.onWillDismiss().then(res => {
+      console.log("changes");
+      this.statusBar.backgroundColorByHexString('#128C7E');
+    });
+
+  }
+
+  contactImageClick(contact){
+    this.currentContact = contact;
+    this.modal.present();
+    this.statusBar.backgroundColorByHexString('#0c5f57');
+  }
+
+  contactClick(contact){
+    this.currentContact = contact;
+  }
 
   compare( a, b ) {
     if ( a.time < b.time ){
@@ -171,4 +220,5 @@ export class ChatsComponent implements OnInit {
     return 0;
   }
 
+  
 }

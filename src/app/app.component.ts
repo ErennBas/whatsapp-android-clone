@@ -1,15 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, OnInit, Inject } from '@angular/core';
 import { IonSegment, IonSlides } from '@ionic/angular';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  providers: [ StatusBar ]
+  providers: [StatusBar]
 })
+
 export class AppComponent implements OnInit {
+  @ViewChild("header") header: HTMLElement;
   @ViewChild('slider', { read: undefined, static: false }) slider: IonSlides;
   @ViewChild('segment', { read: undefined, static: false }) segment: IonSegment;
 
@@ -130,24 +133,26 @@ export class AppComponent implements OnInit {
       time: new Date("08/11/2022 15:35:21")
     }
   ];
+  lastY = 0;
 
   slideOpts = {
     initialSlide: 1,
     speed: 100
   };
 
-  constructor(private statusBar: StatusBar) {
+  constructor(private statusBar: StatusBar, public element: ElementRef, public renderer: Renderer2, private translate: TranslateService) {
     console.log('STATUS BAR ===>>>>', this.statusBar);
-    this.statusBar.overlaysWebView(false); 
-    this.statusBar.backgroundColorByHexString('#128C7E'); 
+    this.statusBar.overlaysWebView(false);
+    this.statusBar.backgroundColorByHexString('#128C7E');
+    this.translate.setDefaultLang('tr');
   }
 
-  ngOnInit(): void {
-    // this.slider.slideTo(1, 0);
+  async ngOnInit() {
   }
 
   async segmentChanged(event: any) {
     const slideId = +(event.detail.value as string).replace('ion-sb-', '');
+    this.renderer.setStyle(this.header['el'], 'margin-top', '0');
     await this.slider.slideTo(slideId, 100);
   }
 

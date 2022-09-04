@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { DomController } from '@ionic/angular';
 
 @Directive({
@@ -6,7 +6,7 @@ import { DomController } from '@ionic/angular';
 })
 export class HideHeaderDirective {
 
-  @Input('header') header: any;
+  header: HTMLElement;
 
   private lastY = 0;
 
@@ -14,27 +14,18 @@ export class HideHeaderDirective {
       private renderer: Renderer2,
       private domCtrl: DomController
   ) {
-    console.log(this.header);
   }
 
   ngOnInit(): void {
-      this.header = this.header.el;
-      this.domCtrl.write(() => {
-          this.renderer.setStyle(this.header, 'transition', 'margin-top 700ms');
-      });
+    this.header = window.document.getElementById("header");
   }
 
-  @HostListener('ionScroll', ['$event']) onContentScroll($event: any) {
-      if ($event.detail.scrollTop > this.lastY) {
-          this.domCtrl.write(() => {
-              this.renderer.setStyle(this.header, 'margin-top', `-${ this.header.clientHeight }px`);
-          });
-      } else {
-          this.domCtrl.write(() => {
-              this.renderer.setStyle(this.header, 'margin-top', '0');
-          });
-      }
-
-      this.lastY = $event.detail.scrollTop;
+  @HostListener('ionScroll', ['$event']) onContentScroll(event) {
+    if (event.detail.scrollTop < this.header.clientHeight) {
+      this.renderer.setStyle(this.header, 'margin-top', `-${event.detail.scrollTop}px`);
+    }
+    else{
+      this.renderer.setStyle(this.header, 'margin-top', `-${this.header.clientHeight}px`);
+    }
   }
 }
