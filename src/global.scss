@@ -27,12 +27,21 @@
 
 //header color #00a884;
 
+@font-face {
+  font-family: AppFont;
+  src: url("./assets/fonts/Roboto-Medium.ttf"); //change url accordingly
+}
+
+:root {
+  --ion-font-family: "AppFont";
+}
+
 ion-item.ion-activatable,
 ion-avatar.ion-activatable {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .text-height {
-    height: 21px;
+  height: 21px;
 }

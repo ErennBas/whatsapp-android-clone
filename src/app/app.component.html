@@ -26,31 +26,31 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-toolbar color="primary" class="">
+  <ion-toolbar color="primary">
     <ion-segment #segment value="ion-sb-1" mode="md" (ionChange)="segmentChanged($event)">
       <ion-segment-button style="min-width: auto; max-width: 48px;">
         <!-- <ion-icon class="camera-icon" name="camera"></ion-icon> -->
         <ion-img style="width: 24px" src="assets/r/buu.png"></ion-img>
       </ion-segment-button>
       <ion-segment-button>
-        <ion-label>chats</ion-label>
+        <ion-label text-capitalize>{{ 'CHATS' | translate }}</ion-label>
       </ion-segment-button>
       <ion-segment-button>
-        <ion-label>status</ion-label>
+        <ion-label text-capitalize>{{ 'STATUS' | translate }}</ion-label>
       </ion-segment-button>
       <ion-segment-button>
-        <ion-label>calls</ion-label>
+        <ion-label text-capitalize>{{ 'CALLS' | translate }}</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 
-  <ion-content [fullscreen]="true" >
+  <ion-content [fullscreen]="true">
     <ion-slides #slider pager="false" (ionSlideWillChange)="slideChanged()" [options]="slideOpts">
       <ion-slide>
         <h1>{{ 'HELLO' | translate }}</h1>
       </ion-slide>
       <ion-slide>
-        <app-chats></app-chats>
+        <app-chats #chats></app-chats>
       </ion-slide>
       <ion-slide>
         <app-status></app-status>

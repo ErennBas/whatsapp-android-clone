@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable max-len */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AnimationController, IonModal, ModalController } from '@ionic/angular';
+import { AnimationController, IonContent, IonModal, ModalController } from '@ionic/angular';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 
@@ -14,7 +16,7 @@ import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 export class ChatsComponent implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
   @ViewChild(IonModal) modal2: IonModal;
-  
+  @ViewChild(IonContent, { static: false }) content: IonContent;
   profileCdn: string = environment.profilePhotoCdn;
   currentContact;
   contacts = [
@@ -22,115 +24,115 @@ export class ChatsComponent implements OnInit {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Ali',
       contactAvatar: this.profileCdn + '1.jfif',
       snippet: 'az bak şuraya...',
-      time: new Date("08/10/2022 15:35:21")
+      time: new Date('08/10/2022 15:35:21')
     },
     {
       contactName: 'Veli',
       contactAvatar: this.profileCdn + '2.jfif',
       snippet: 'template iyi oturuyor',
-      time: new Date("08/09/2022 15:35:21")
+      time: new Date('08/09/2022 15:35:21')
     },
     {
       contactName: 'Kırk Dokuz',
       contactAvatar: this.profileCdn + '4.jfif',
       snippet: 'acaba gelen mesaj sayısını gösteren kısmı nasıl yapıcam',
-      time: new Date("08/10/2021 15:35:21")
+      time: new Date('08/10/2021 15:35:21')
     },
     {
       contactName: 'Elli',
       contactAvatar: this.profileCdn + '5.jfif',
       snippet: 'Halederiz bir şekilde. Takma..',
-      time: new Date("08/11/2022 15:35:21")
+      time: new Date('08/11/2022 15:35:21')
     }
   ];
 
@@ -162,26 +164,30 @@ export class ChatsComponent implements OnInit {
       .addAnimation([backdropAnimation, wrapperAnimation]);
   };
 
-  leaveAnimation = (baseEl: HTMLElement) => {
-    return this.enterAnimation(baseEl).direction('reverse');
-  };
+  leaveAnimation = (baseEl: HTMLElement) => this.enterAnimation(baseEl).direction('reverse');
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  onWillDismiss(event){
-    this.statusBar.backgroundColorByHexString('#128C7E');
+  scrollToTop(){
+    this.content.scrollToTop();
   }
 
-  async openCurrentContactAvatar(){
-    console.log("fdsa");
+
+  onWillDismiss(event) {
+    this.statusBar.overlaysWebView(false);
+    this.statusBar.backgroundColorByHexString('#008069');
+  }
+
+  async openCurrentContactAvatar() {
+    console.log('fdsa');
 
     const contactImageModal = await this.modalCtrl.create({
       component: ViewerModalComponent,
       componentProps: {
         src: this.currentContact.contactAvatar,
-        scheme: "dark",
+        scheme: 'dark',
         title: this.currentContact.contactName
-      },      
+      },
       cssClass: 'ion-img-viewer',
       keyboardClose: true,
       showBackdrop: true,
@@ -194,31 +200,30 @@ export class ChatsComponent implements OnInit {
 
 
     contactImageModal.onWillDismiss().then(res => {
-      console.log("changes");
-      this.statusBar.backgroundColorByHexString('#128C7E');
+      console.log('changes');
+      this.statusBar.overlaysWebView(false);
+      this.statusBar.backgroundColorByHexString('#008069');
     });
 
   }
 
-  contactImageClick(contact){
+  contactImageClick(contact) {
     this.currentContact = contact;
     this.modal.present();
-    this.statusBar.backgroundColorByHexString('#0c5f57');
+    this.statusBar.backgroundColorByHexString('#005747');
   }
 
-  contactClick(contact){
+  contactClick(contact) {
     this.currentContact = contact;
   }
 
-  compare( a, b ) {
-    if ( a.time < b.time ){
+  compare(a, b) {
+    if (a.time < b.time) {
       return 1;
     }
-    if ( a.time > b.time ){
+    if (a.time > b.time) {
       return -1;
     }
     return 0;
   }
-
-  
 }

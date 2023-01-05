@@ -1,3 +1,6 @@
 {
-    "HELLO": "Hello"
+  "HELLO": "Hello",
+  "CHATS": "Chats",
+  "STATUS": "Status",
+  "CALLS": "Calls"
 }

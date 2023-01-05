@@ -1,5 +1,5 @@
-<ion-content [scrollEvents]="true" appHideHeader>
-  <ion-list class="margin-bottom ion-no-padding">
+<ion-content [scrollEvents]="true" appHideHeader #content>
+  <ion-list class="margin-bottom ion-no-padding" lines="none">
     <ion-item *ngFor="let contact of contacts" class="ion-activatable" no-lines>
       <ion-avatar slot="start" style="height: 50px; width: 50px;" (click)="contactImageClick(contact)">
         <img [src]="contact?.contactAvatar" />
@@ -69,7 +69,7 @@
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button color="primary">
+  <ion-fab-button color="secondary">
     <!-- <ion-icon color="light" name="chatbox-ellipses"></ion-icon> -->
     <ion-img style="width: 24px" src="assets/r/9k.png"></ion-img>
   </ion-fab-button>
