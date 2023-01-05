@@ -3,12 +3,15 @@
     <ion-toolbar color="primary">
       <ion-title>WhatsApp</ion-title>
       <ion-buttons slot="end">
+        <ion-button  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <ion-img style="width: 24px" src="assets/r/bua.png"></ion-img>
+        </ion-button>
         <ion-button>
-          <ion-icon name="search"></ion-icon>
+          <ion-img style="width: 24px" src="assets/r/bqz.png"></ion-img>
         </ion-button>
         <ion-button  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <ion-icon name="ellipsis-vertical"></ion-icon>
-        </ion-button>        
+        </ion-button>
         <!-- <div class="btn-group dropstart">
           <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Dropstart
@@ -21,12 +24,13 @@
           </ul>
         </div> -->
       </ion-buttons>
-    </ion-toolbar>    
+    </ion-toolbar>
   </ion-header>
   <ion-toolbar color="primary" class="">
     <ion-segment #segment value="ion-sb-1" mode="md" (ionChange)="segmentChanged($event)">
       <ion-segment-button style="min-width: auto; max-width: 48px;">
-        <ion-icon class="camera-icon" name="camera"></ion-icon>
+        <!-- <ion-icon class="camera-icon" name="camera"></ion-icon> -->
+        <ion-img style="width: 24px" src="assets/r/buu.png"></ion-img>
       </ion-segment-button>
       <ion-segment-button>
         <ion-label>chats</ion-label>
